@@ -2,7 +2,7 @@
 
 from decimal import Decimal
 from django.conf import settings
-from shop.models import Product
+from shop.models import Products
 #a cart class that will help us manage our shopping cart.
 class Cart(object):
 	def __init__(self, request):
@@ -38,7 +38,7 @@ class Cart(object):
 				#We define an __iter__ (self) method which help us iterate through the items in contained in our cart and get the related product instances.
 	def __iter__(self):
 		product_ids = self.cart.keys()
-		products = Product.objects.filter(id__in = product_ids)
+		products = Products.objects.filter(id__in = product_ids)
 		for product in products:
 			self.cart[str(product.id)]['product'] = product
 

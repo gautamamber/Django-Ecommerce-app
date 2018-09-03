@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 # Create your views here.
 
 from .models import Category, Products
+from cart.forms import CartAddProductForm
 
 #product_list use to display a list of products
 # category_slug=None use if products are filtered using a given category by our users.
@@ -24,8 +25,10 @@ def product_list(request, category_slug = None):
 
 def product_detail(request, id, slug):
 	product = get_object_or_404(Products, id = id, slug = slug, available= True)
+	cart_product_form = CartAddProductForm()
 	context = {
-	'product' : product
+	'product' : product,
+	'cart_product_form' : cart_product_form
 	}
 	return render(request, 'shop/product/details.html', context)
 
