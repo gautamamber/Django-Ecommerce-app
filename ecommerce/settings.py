@@ -121,3 +121,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'products/')
+#we define ‘cart’ as the key that we are going to use to the cart in user session
+CART_SESSION_ID = 'cart'
